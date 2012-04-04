@@ -3,7 +3,7 @@ require_once('statModel.php');
 require_once('configuration.php');
 
 class statsModel {	
-	public function getResults($mode=0) {
+	public function getResults($mode=0,$from=0,$count=30) {
 		$results = array();
 		
 		if(isset($GLOBALS['password']))
@@ -25,6 +25,11 @@ class statsModel {
 			case 7: $query .= " ORDER BY `level` DESC"; break;
 			case 8: $query .= " GROUP BY `bssid`"; break;
 		}
+		if($from>=0)
+			$query .= " LIMIT $from , $count";
+		else if($count!=0)
+			$query .= "LIMIT $count";
+
 		$result = mysql_query($query);
 		
 		while($row = mysql_fetch_array($result)) {

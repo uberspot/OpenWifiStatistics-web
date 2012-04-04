@@ -13,13 +13,15 @@ require_once('templates/template.php');
     
 	
     /* Presentation */
-	    
+	
+	 $script = '<script type="text/javascript" src="js/morebutton.js"></script>';
+	
     echo Template::header("Results");
     
     echo Template::contentStart();
     
     echo "
-	<table>";
+	<table id='resulttable'>";
 	switch($order) {
 		case 0: echo "<tr><th><a href='?order=2'>Date ↺</a></th>
 		<th>BSSID</th><th>SSID</th>
@@ -65,11 +67,15 @@ require_once('templates/template.php');
 			echo '<td>'.$result->getCapabilities().'</td>';
 			echo '<td>'.$result->getFrequency().'</td>';
 			echo '<td>'.$result->getLevel().'</td>';
-                        echo '<td>'.$result->getProvider().'</td>';
+			echo '<td>'.$result->getProvider().'</td>';
 			echo "</tr>";
     }
     echo "</table>";
 	
+	echo '<form>
+		<input type="hidden" id="order" name="order" value="'.$order.'">
+		<button id="more" class="submit">More</button>
+	</form>'.$script;
     echo Template::contentEnd();
     echo Template::footer();
     
