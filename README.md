@@ -7,6 +7,9 @@ server for analysis.
 
 This repo is the web interface part of OpenWifiStatistics.
 
+To set up a web mirror for statistics collection you also need to create a 
+'cache/' directory writable by your http server and a working mysql database.
+
 License
 -------
 
