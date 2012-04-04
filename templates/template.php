@@ -11,7 +11,18 @@ class Template {
 	<head>
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 		<title>Open Wifi Statistics$title</title>
-		<link rel="stylesheet" href="templates/style.css" type="text/css" />
+		<script type="text/javascript">// <![CDATA[  
+			var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+			var cssLink = document.createElement("link");
+			cssLink.setAttribute("type", "text/css");
+			cssLink.setAttribute("rel", "stylesheet");
+			if(mobile) {  
+				cssLink.setAttribute("href", "templates/handheld.css");
+			} else {
+				cssLink.setAttribute("href", "templates/style.css");
+			}			
+			document.head.appendChild(cssLink);
+		// ]]></script> 
 		$script
 	</head>
 	<body>
