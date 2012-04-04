@@ -36,7 +36,7 @@ require_once('jsmin.php');
 		var markers = [];';
      $latitude = 0;
      $longtitude = 0;
-     foreach($results->getResults(8) as $result) {
+     foreach($results->getResults(8,-1,0) as $result) {
 		 $script .= '
         markers.push(marker = new google.maps.Marker({
 	position: new google.maps.LatLng('.$result->getLatitude().', '.$result->getLongitude().'), 
