@@ -16,6 +16,7 @@ class statsModel {
 		$query = "SELECT * FROM `scan_results`";
 		
 		switch($mode) {
+			case 0: $query .= " ORDER BY `timestamp` DESC"; break;
 			case 1: $query .= " GROUP BY `ssid`"; break;
 			case 2: $query .= " ORDER BY `timestamp`"; break;
 			case 3: $query .= " ORDER BY `timestamp` DESC"; break;
