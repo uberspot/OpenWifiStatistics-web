@@ -11,6 +11,7 @@ class Template {
 	<head>
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 		<title>Open Wifi Statistics$title</title>
+		<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, height=device-height, initial-scale=1.0" />
 		<script type="text/javascript">// <![CDATA[  
 			var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
 			var cssLink = document.createElement("link");

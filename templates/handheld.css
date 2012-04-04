@@ -1,2 +1,17 @@
 html{ height:100%; }
-body{ height:100%; margin:.5em auto; padding:0px; text-align: center; width:90%}
+body{ height:100%; margin:.5em auto; padding:0px; text-align: center; width:100%}
+#menu{ font-size: 3em; }
+.abox { border: solid 1px; background-color: #8AB071;}
+a.abox { color:black; text-decoration: none;}
+#more { border: solid 1px; background-color: #8AB071; font-size: 3em;}
+#map{ position: relative; height: 100%; padding: 0px; text-align:justify; margin:0px auto; }
+#vendor0{ color: #006CFF }
+#vendor1{ color: #FF6600 }
+#vendor2{ color: #34A038 }
+#vendor3{ color: #945D59 }
+#vendor4{ color: #93BBF4 }
+#vendor5{ color: #F493B8 }
+#vendor8{ color: #CCC }
+#vendor7{ color: #f123cc }
+#vendor6{ color: #e3e123 }
+#vendor9{ color: red }
