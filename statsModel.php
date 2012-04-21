@@ -3,7 +3,7 @@ require_once('statModel.php');
 require_once('configuration.php');
 
 class statsModel {	
-	public function getResults($mode=0,$from=0,$count=30) {
+	public function getResults($mode=0,$from=0,$count=30,$where="") {
 		$results = array();
 		
 		if(isset($GLOBALS['password']))
@@ -13,7 +13,10 @@ class statsModel {
 
 		mysql_select_db($GLOBALS['database']) or die("Unable to select database");
 
-		$query = "SELECT * FROM `scan_results`";
+		$query = "SELECT * FROM `scan_results`";		
+		
+		if($where != "")
+			$query .= " WHERE $where";
 		
 		switch($mode) {
 			case 0: $query .= " ORDER BY `timestamp` DESC"; break;
@@ -26,11 +29,12 @@ class statsModel {
 			case 7: $query .= " ORDER BY `level` DESC"; break;
 			case 8: $query .= " GROUP BY `bssid`"; break;
 		}
-		if($from>=0)
+		
+		if($from >= 0)
 			$query .= " LIMIT $from , $count";
-		else if($count!=0)
+		else if($count != 0)
 			$query .= "LIMIT $count";
-
+		
 		$result = mysql_query($query);
 		
 		while($row = mysql_fetch_array($result)) {
