@@ -29,11 +29,19 @@ require_once('jsmin.php');
     <style type="text/css">body{height:100%;padding:0px;overflow:hidden;}#map{height:100%;}</style>
     <script type="text/javascript">
 		$(function() { 
+			var markerclusterer;
 			$("#map").goMap({
 				markers: [';
+				 $g = '';
 				 foreach($results->getResults(8,-1,0) as $result) {
+					 switch($result->getCapabilities()) {
+						 case "[open]": $g = 'g1';break;
+						 case "[WEP]":  $g = 'g2';break;
+						 default: $g = 'g3';break;
+					 }
 					 $script .= '{latitude:'.$result->getLatitude()
-							.',longitude:'.$result->getLongitude().'},';
+							.',longitude:'.$result->getLongitude()
+							.',title:\''.$result->getSsid().'\',group:\''.$g.'\'},';
 				 }
 			$script .= '],
 			mapTypeControl: false,
@@ -48,7 +56,23 @@ require_once('jsmin.php');
 					markers.push(temp);
 				}
 
-				var markerclusterer = new MarkerClusterer($.goMap.map, markers);
+				markerclusterer = new MarkerClusterer($.goMap.map, markers);
+			});	
+			$("#group").change(function() {
+				var group = $(this).val();
+				
+				var markers = [];
+
+				for (var i in $.goMap.markers) {
+					
+					var temp = $($.goMap.mapId).data($.goMap.markers[i]);
+					
+					if(temp.group == group || group == \'all\') {
+						markers.push(temp);
+					}
+				}
+				markerclusterer.clearMarkers();
+				markerclusterer = new MarkerClusterer($.goMap.map, markers);
 			});
 		});
 		
@@ -58,6 +82,12 @@ require_once('jsmin.php');
 	
     $out = Template::header("Map",$script);
     $out .= '<div id="map-box"><div id="map"></div></div>';
+    $out .= '<select id="group">
+			<option value="all">Show all wifi</option>
+			<option value="g1">Show only open</option>
+			<option value="g2">Show only wep</option>
+			<option value="g3">Show only the rest</option>
+			</select>';
 
     $out .= Template::footer();
     
