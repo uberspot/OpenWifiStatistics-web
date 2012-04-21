@@ -33,15 +33,16 @@ require_once('jsmin.php');
 			$("#map").goMap({
 				markers: [';
 				 $g = '';
+				 $i = '';
 				 foreach($results->getResults(8,-1,0) as $result) {
 					 switch($result->getCapabilities()) {
-						 case "[open]": $g = 'g1';break;
-						 case "[WEP]":  $g = 'g2';break;
-						 default: $g = 'g3';break;
+						 case "[open]": $g = 'g1';$i='1.png';break;
+						 case "[WEP]":  $g = 'g2';$i='2.png';break;
+						 default: $g = 'g3';$i='3.png';break;
 					 }
 					 $script .= '{latitude:'.$result->getLatitude()
 							.',longitude:'.$result->getLongitude()
-							.',title:\''.$result->getSsid().'\',group:\''.$g.'\'},';
+							.',title:\''.$result->getSsid().'\',group:\''.$g.'\',icon:\'img/'.$i.'\'},';
 				 }
 			$script .= '],
 			mapTypeControl: false,
@@ -83,7 +84,7 @@ require_once('jsmin.php');
     $out = Template::header("Map",$script);
     $out .= '<div id="map-box"><div id="map"></div></div>';
     $out .= '<select id="group">
-			<option value="all">Show all wifi</option>
+			<option value="all">Show all wifi spots</option>
 			<option value="g1">Show only open</option>
 			<option value="g2">Show only wep</option>
 			<option value="g3">Show only the rest</option>
