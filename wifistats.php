@@ -11,11 +11,7 @@ function sanitizeString($word){
 	return $word;
 }
 
-/* database */
-$host = "localhost";
-$user = "le_user";
-$password = "le_pass";
-$database = "le_dbname";
+require_once('configuration.php');
 
 if(isset($_POST['submit'])) {
     $BSSID = sanitizeString($_POST['bssid']);
@@ -33,7 +29,11 @@ if(isset($_POST['submit'])) {
     if( empty($capabilities) ) {
         $capabilities = "[open]";
     }
-    mysql_connect($host, $user, $password);
+    
+    if(isset($GLOBALS['password']))
+			mysql_connect($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['password']);
+		else
+			mysql_connect($GLOBALS['host'], $GLOBALS['user']);
 
     mysql_select_db($database) or die("Unable to select database");
 

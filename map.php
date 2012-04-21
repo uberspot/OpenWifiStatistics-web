@@ -86,7 +86,7 @@ require_once('jsmin.php');
 		  }
     </script>';
     
-    $script = JSMin::minify($script);
+    //$script = JSMin::minify($script);
 	
     $out = Template::header("Map",$script);
     $out .= '<div id="map">
