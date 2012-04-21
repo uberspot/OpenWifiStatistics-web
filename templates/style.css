@@ -7,7 +7,7 @@ a.abox{ color: white; }
 a.abox:hover{ text-decoration:underline; }
 .abox{ vertical-align: top; }
 #content{ padding:80px 0px 0px 0px; margin:0px auto; position: relative; width:90%; }
-#map{ position: relative; height: 90%; padding: 80px 0px 0px 0px; text-align:justify; margin:0px auto; }
+#map-box{ position: relative; height: 90%; padding: 80px 0px 0px 0px; text-align:justify; margin:0px auto; overflow:hidden;}
 .charts_container{ text-align: center; width: 80%; margin: 10px auto; }
 #content table { margin: 0 auto; }
 .chart_container{ width: 400px; height: 400px; margin: 0px 25px; float: left; }
