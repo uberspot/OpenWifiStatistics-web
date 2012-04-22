@@ -4,7 +4,8 @@ body{ height:100%; margin:.5em auto; padding:0px; text-align: center; width:100%
 .abox { border: solid 1px; background-color: #8AB071;}
 a.abox { color:black; text-decoration: none;}
 #more { border: solid 1px; background-color: #8AB071; font-size: 3em;}
-#map{ position: relative; height: 100%; padding: 0px; text-align:justify; margin:0px auto; }
+#map-box{ position: relative; height: 80%; padding: 0px; text-align:justify; margin:0px auto; overflow:hidden;}
+select{height:40px;}
 #vendor0{ color: #006CFF }
 #vendor1{ color: #FF6600 }
 #vendor2{ color: #34A038 }

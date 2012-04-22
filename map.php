@@ -25,7 +25,7 @@ require_once('configuration.php');
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="js/jquery.gomap-1.3.2.min.js"></script>
     <script src="js/markerclusterer.js"></script>
-    <style type="text/css">body{height:100%;padding:0px;overflow:hidden;}#map{height:100%;}img{height:23px;}</style>
+    <style type="text/css">body{height:100%;padding:0px;overflow:hidden;}#map{height:100%;}.img{height:23px;}</style>
     <script type="text/javascript">
 		$(function() {
 			var markerclusterer;			
@@ -106,8 +106,9 @@ require_once('configuration.php');
 			<option value="g2">Show only wep</option>
 			<option value="g3">Show only the rest</option>
 			</select>';
-	$out .= '<img src="img/1.png" alt="open marker" /> O (OPEN) &bull; 
-	<img src="img/2.png" alt="wep marker" /> W (WEP) &bull; <img src="img/3.png" alt="other marker" /> S (OTHER SECURE)';
+	$out .= '<img class="img" src="img/1.png" alt="open marker" /> O (OPEN) &bull; 
+		<img class="img" src="img/2.png" alt="wep marker" /> W (WEP) &bull; 
+		<img class="img" src="img/3.png" alt="other marker" /> S (OTHER SECURE)';
     $out .= Template::footer();
     
     $file = fopen($cache,'w');
