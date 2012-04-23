@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
 		else
 			mysql_connect($GLOBALS['host'], $GLOBALS['user']);
 
-    mysql_select_db($database) or die("Unable to select database");
+    mysql_select_db($GLOBALS['database'] ) or die("Unable to select database");
 
     mysql_query("INSERT INTO `scan_results` (`bssid`,`ssid`,`capabilities`,`frequency`,`level`,`provider`,`latitude`,`longitude`) VALUES 
                                         ('$BSSID','$SSID','$capabilities','$frequency','$level','$provider','$latitude','$longitude')");
