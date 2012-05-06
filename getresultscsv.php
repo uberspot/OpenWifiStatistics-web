@@ -27,9 +27,9 @@
 		
 		$results = new statsModel();
 		
-		echo "bssid;ssid;security;latitude;longitude\n";
+		echo "bssid,ssid,security,latitude,longitude\n";
 		foreach($results->getResultsByLocation($long,$lat,$km) as $result) {
-			echo $result->getBssid().';'.$result->getSsid().';'.$result->getCapabilities().';'.$result->getLongitude().';'.$result->getLatitude()."\n";
+			echo $result->getBssid().','.$result->getSsid().','.$result->getCapabilities().','.$result->getLongitude().','.$result->getLatitude()."\n";
 		}		
 	} else {
 		echo "No parameters set!";
