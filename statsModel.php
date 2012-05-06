@@ -41,6 +41,31 @@ class statsModel {
 		return $results;
 	}
 	
+	public function getResultsByLocation($long,$lat,$km) {
+		$results = array();
+		
+		if(isset($GLOBALS['password']))
+			mysql_connect($GLOBALS['host'], $GLOBALS['user'], $GLOBALS['password']);
+		else
+			mysql_connect($GLOBALS['host'], $GLOBALS['user']);
+
+		mysql_select_db($GLOBALS['database']) or die("Unable to select database");
+
+		$query = "SELECT * FROM `scan_results` WHERE `longitude` BETWEEN "
+			.($long-$km)." AND ".($long+$km)." AND `latitude` BETWEEN "
+			.($lat-$km)." AND ".($lat+$km)."";
+			
+		$result = mysql_query($query);
+		
+		if($result)
+		while($row = mysql_fetch_array($result)) {
+			$results[] = new statModel($row);
+		}
+		mysql_close();
+		
+		return $results;
+	}
+	
 	public function getStats() {
 		$stats = array();
 		
